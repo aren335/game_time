@@ -1,0 +1,155 @@
+:root {
+    --ghost-blue: #a2d2ff;
+    --void-purple: #240046;
+    --dream-gold: #ff9e00;
+    --time-green: #06d6a0;
+    --bomb-red: #ef476f;
+}
+
+body {
+    margin: 0;
+    background: #0a0118;
+    color: white;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+}
+
+#login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 1, 24, 0.98);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s;
+}
+
+#login-box {
+    background: #10002b;
+    padding: 40px;
+    border: 3px solid var(--ghost-blue);
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 0 30px var(--ghost-blue);
+}
+
+#login-box input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    background: #1a0040;
+    border: 1px solid var(--ghost-blue);
+    color: white;
+}
+
+#ui-bar {
+    width: 100%;
+    max-width: 800px;
+    display: none;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+
+#game-container {
+    position: relative;
+    width: 90vw;
+    max-width: 800px;
+    height: 600px;
+    background: #10002b;
+    border: 4px solid var(--ghost-blue);
+    border-radius: 20px;
+    filter: blur(10px);
+    transition: filter 0.5s;
+}
+
+body.game-started #game-container { filter: blur(0); }
+
+.bin {
+    position: absolute;
+    bottom: 20px;
+    width: 120px;
+    height: 100px;
+    border: 3px solid white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#bin-dreams { left: 10%; border-color: var(--dream-gold); }
+#bin-whispers { left: 42%; border-color: #9d4edd; }
+#bin-shadows { right: 10%; border-color: #3a0ca3; }
+
+.package {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: grab;
+    z-index: 10;
+}
+
+.void-bomb { border-color: var(--bomb-red); background: rgba(239, 71, 111, 0.2); }
+.special { border-color: var(--dream-gold); }
+
+#alert {
+    position: absolute;
+    top: 40%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: 0;
+    transition: 0.3s;
+}
+.show-alert { opacity: 1; }
+
+.shake { animation: shake 0.3s; }
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.text-btn { background: none; border: none; color: var(--ghost-blue); cursor: pointer; text-decoration: underline; }
+
+/* Prevent scrolling/bouncing on mobile */
+html, body {
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+#game-container {
+    width: 95vw; /* Slightly wider for mobile */
+    height: 70vh; /* Use vertical height instead of fixed pixels */
+    touch-action: none; /* Crucial: stops the browser from taking over touch events */
+}
+
+.bin {
+    width: 28%; /* Use percentages so bins fit side-by-side on narrow screens */
+    height: 80px;
+    font-size: 0.8rem;
+}
+
+#bin-dreams { left: 2%; }
+#bin-whispers { left: 36%; }
+#bin-shadows { right: 2%; }
+
+.package {
+    width: 70px; /* Slightly larger hit area for fingers */
+    height: 70px;
+}

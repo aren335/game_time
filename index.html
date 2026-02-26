@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Midnight Post Office</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-mode">
+    <section id="login-overlay">
+        <div id="login-box">
+            <h1 id="form-title">VOID LOGIN</h1>
+            <form id="auth-form" onsubmit="event.preventDefault(); handleAuth();">
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit" id="main-btn">ENTER VOID</button>
+                <p id="toggle-text">New voyager? <button type="button" class="text-btn" onclick="toggleMode()">Create Account</button></p>
+            </form>
+        </div>
+    </section>
+
+    <header id="ui-bar">
+        <div class="stat">Score: <span id="score">0</span></div>
+        <div class="stat">Dawn in: <span id="timer">60</span>s</div>
+    </header>
+
+    <main id="game-container">
+        <div id="alert"></div>
+        <div id="combo-meter"></div>
+        <section id="sorting-bins">
+            <div class="bin" id="bin-dreams" data-type="dreams">
+                <span class="bin-label">DREAMS</span>
+                <span class="bin-icon">☁️</span>
+            </div>
+            <div class="bin" id="bin-whispers" data-type="whispers">
+                <span class="bin-label">WHISPERS</span>
+                <span class="bin-icon">👂</span>
+            </div>
+            <div class="bin" id="bin-shadows" data-type="shadows">
+                <span class="bin-label">SHADOWS</span>
+                <span class="bin-icon">👻</span>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
